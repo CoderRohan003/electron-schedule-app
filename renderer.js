@@ -16,10 +16,13 @@ backToHomeButton.style.display = 'block';
 let currentPath = folderPath;
 let currentFilePath = '';
 
+const titleStack = [];
+
 function loadSubjects() {
     currentPath = folderPath;
     loadDirectory(currentPath);
-    pageTitle.textContent = 'PDF Organizer';
+    pageTitle.textContent = 'PDF Organizer'; 
+    titleStack.length = 0; 
 }
 
 function loadDirectory(directoryPath) {
@@ -33,22 +36,24 @@ function loadDirectory(directoryPath) {
         if (fs.statSync(itemPath).isDirectory()) {
             const li = document.createElement('li');
             const icon = document.createElement('i');
-            icon.classList.add('fas', 'fa-folder');
+            icon.classList.add('fas', 'fa-folder'); 
             li.appendChild(icon);
             li.appendChild(document.createTextNode(item));
             li.addEventListener('click', () => {
-                pageTitle.textContent = item;
+                titleStack.push(pageTitle.textContent); 
+                pageTitle.textContent = item; 
                 loadDirectory(itemPath);
             });
             subjectList.appendChild(li);
         } else if (item.toLowerCase().endsWith('.pdf')) {
             const li = document.createElement('li');
             const icon = document.createElement('i');
-            icon.classList.add('fas', 'fa-file-pdf');
+            icon.classList.add('fas', 'fa-file-pdf'); 
             li.appendChild(icon);
-            li.appendChild(document.createTextNode(item.replace('.pdf', '')));
+            li.appendChild(document.createTextNode(item.replace('.pdf', ''))); 
             li.addEventListener('click', () => {
-                pageTitle.textContent = item.replace('.pdf', '');
+                titleStack.push(pageTitle.textContent); 
+                pageTitle.textContent = item.replace('.pdf', ''); 
                 openPDF(itemPath);
             });
             subjectList.appendChild(li);
@@ -66,12 +71,17 @@ function goBack() {
     if (currentPath !== folderPath) {
         const parentPath = path.dirname(currentPath);
         loadDirectory(parentPath);
+        pdfViewer.src = '';
         openInAdobeButton.style.display = 'none';
+
+        if (titleStack.length > 0) {
+            pageTitle.textContent = titleStack.pop(); 
+        }
     }
 }
 
 function goHome() {
-    window.location.href = 'index.html';
+    window.location.href = 'index.html'; 
 }
 
 function openInAdobe() {
