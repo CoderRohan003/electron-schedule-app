@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Subjects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-right: 30px;
+            padding: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 370px;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .card h3 {
+            margin: 15px 0;
+        }
+
+        /* Back button styling */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #e74c3c;
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back button -->
+    <button class="back-button" id="backButton">Back</button>
+
+    <h1>Lab Subjects</h1>
+    <div class="card-container">
+        <div class="card" id="subject1">
+            <img src="sub1.webp" alt="Subject 1">
+            <h3>Subject 1</h3>
+        </div>
+        <div class="card" id="subject2">
+            <img src="subject2.jpg" alt="Subject 2">
+            <h3>Subject 2</h3>
+        </div>
+        <div class="card" id="subject3">
+            <img src="subject3.jpg" alt="Subject 3">
+            <h3>Subject 3</h3>
+        </div>
+    </div>
+
+    <script>
+        // Event listeners for subject cards
+        document.getElementById('subject1').addEventListener('click', () => {
+            window.location.href = 'subject1.html';
+        });
+        document.getElementById('subject2').addEventListener('click', () => {
+            window.location.href = 'subject2.html';
+        });
+        document.getElementById('subject3').addEventListener('click', () => {
+            window.location.href = 'subject3.html';
+        });
+
+        // Back button functionality
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.history.back(); // This will take the user to the previous page
+        });
+    </script>
+</body>
+</html>
