@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Theory - PDF Organizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,9 +36,14 @@
         #subjectList li {
             padding: 10px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
         }
         #subjectList li:hover {
             background: #ddd;
+        }
+        #subjectList li i {
+            margin-right: 10px;
         }
         #pdfViewer {
             flex-grow: 1;
@@ -47,6 +53,7 @@
         .nav-button {
             position: absolute;
             top: 20px;
+            left: 20px;
             background-color: #f4f4f4;
             border: 1px solid #ccc;
             padding: 8px 15px;
@@ -59,9 +66,6 @@
             background-color: #ddd;
         }
         #backButton {
-            left: 20px;
-        }
-        #backToHomeButton {
             left: 150px;
         }
         #openInAdobeButton {
@@ -82,10 +86,10 @@
     </style>
 </head>
 <body>
-    <button class="nav-button" id="backButton">Back</button>
-    <button class="nav-button" id="backToHomeButton">Back to Home</button>
+    <button class="nav-button" id="backToHomeButton" style="display: block;">Back to Home</button>
+    <button class="nav-button" id="backButton" style="display: none;">Back</button>
     <button id="openInAdobeButton">Open in Adobe Reader</button>
-    <h1>Theory - PDF Organizer</h1>
+    <h1 id="pageTitle">Theory - PDF Organizer</h1>
     <div class="container">
         <ul id="subjectList"></ul>
         <iframe id="pdfViewer" src=""></iframe>
